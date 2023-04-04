@@ -1,8 +1,10 @@
+import { useDispatch } from "react-redux";
 import { Col, Card, Button } from "react-bootstrap";
-import useBebidas from "../hooks/useBebidas";
+import { mostrarModalAction } from '../actions/bebidaActions';
 
 const Bebida = ({ bebida }) => {
-  const { handleModalClick, handleBebidaIdClick } = useBebidas();
+  const dispatch = useDispatch();
+  const handleModalClick = (bebidaId) => dispatch(mostrarModalAction(bebidaId));
 
   return (
     <Col md={6} lg={3}>
@@ -17,8 +19,7 @@ const Bebida = ({ bebida }) => {
           <Card.Title>{bebida.strDrink}</Card.Title>
           <Button
             onClick={() => {
-              handleModalClick();
-              handleBebidaIdClick(bebida.idDrink);
+              handleModalClick(bebida.idDrink);
             }}
             variant="warning"
             className="w-100 text-uppercase mt-2"

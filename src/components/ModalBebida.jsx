@@ -1,8 +1,13 @@
+import { useSelector, useDispatch } from "react-redux";
 import { Modal, Image } from "react-bootstrap";
-import useBebidas from "../hooks/useBebidas";
+import { cerrarModalAction } from '../actions/bebidaActions';
 
 const ModalBebida = () => {
-  const { modal, handleModalClick, receta, cargando } = useBebidas();
+  const dispatch = useDispatch();
+  const handleModalClick = () => dispatch(cerrarModalAction());
+  const loading =  useSelector(state => state.bebidas.loading);
+  const modal =  useSelector(state => state.bebidas.modal);
+  const receta =  useSelector(state => state.bebidas.receta);
 
   const mostrarIngredientes = () => {
     let ingredientes = [];
@@ -19,7 +24,7 @@ const ModalBebida = () => {
   };
 
   return (
-    !cargando && (
+    !loading && (
       <Modal show={modal} onHide={handleModalClick}>
         <Image src={receta.strDrinkThumb} alt={`Imge ${receta.strDrink}`} />
         <Modal.Header>

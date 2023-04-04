@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Row, Col, Alert } from "react-bootstrap";
-import useCategorias from "../hooks/useCategorias";
-import useBebidas from "../hooks/useBebidas";
+import { obtenerBebidasAction } from '../actions/bebidaActions';
+import { obtenerCategoriasAction } from "../actions/categoriaActions"
 
 const Formulario = () => {
   const [busqueda, setBusqueda] = useState({
@@ -9,8 +10,14 @@ const Formulario = () => {
     categoria: "",
   });
   const [alerta, setAlerta] = useState("");
-  const { categorias } = useCategorias();
-  const { consultarBebidas } = useBebidas();
+  const dispatch = useDispatch();
+  const cargarBebidas = busqueda => dispatch(obtenerBebidasAction(busqueda));
+  const categorias =  useSelector(state => state.categorias.categorias);
+
+  useEffect(() =>{
+    const cargarCategorias = () => dispatch(obtenerCategoriasAction());
+    cargarCategorias();
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +27,7 @@ const Formulario = () => {
       return;
     }
     setAlerta("");
-    consultarBebidas(busqueda);
+    cargarBebidas(busqueda)
   };
 
   return (

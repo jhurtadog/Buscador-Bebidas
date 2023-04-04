@@ -1,9 +1,9 @@
-import useBebidas from "../hooks/useBebidas";
+import { useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
 import Bebida from "./Bebida";
 
 const ListadoBebidas = () => {
-  const { bebidas } = useBebidas();
+  const bebidas = useSelector((state) => state.bebidas.bebidas);
   return (
     <Row className="mt-5">
       {bebidas.map((bebida) => (
