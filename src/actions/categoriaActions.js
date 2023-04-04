@@ -9,7 +9,7 @@ export function obtenerCategoriasAction() {
   return async (dispatch) => {
     dispatch(descargarCategorias());
     try {
-      const { data } = await clientAxios.get(`list.php?c=list`);
+      const { data } = await clientAxios.get("list.php?c=list");
       dispatch(descargaCategoriasExitosa(data.drinks));
     } catch (error) {
       dispatch(descargaCategoriasError(true));

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Col, Card, Button } from "react-bootstrap";
-import { mostrarModalAction } from '../actions/bebidaActions';
+import { mostrarModalAction } from "../actions/bebidaActions";
+import PropTypes from "prop-types";
 
 const Bebida = ({ bebida }) => {
   const dispatch = useDispatch();
@@ -31,5 +32,10 @@ const Bebida = ({ bebida }) => {
     </Col>
   );
 };
+
+Bebida.propTypes = {
+  bebida: PropTypes.object,
+};
+
 
 export default Bebida;

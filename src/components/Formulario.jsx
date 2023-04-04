@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Row, Col, Alert } from "react-bootstrap";
-import { obtenerBebidasAction } from '../actions/bebidaActions';
-import { obtenerCategoriasAction } from "../actions/categoriaActions"
+import { obtenerBebidasAction } from "../actions/bebidaActions";
+import { obtenerCategoriasAction } from "../actions/categoriaActions";
 
 const Formulario = () => {
   const [busqueda, setBusqueda] = useState({
@@ -17,7 +17,7 @@ const Formulario = () => {
   useEffect(() =>{
     const cargarCategorias = () => dispatch(obtenerCategoriasAction());
     cargarCategorias();
-  }, [])
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const Formulario = () => {
       return;
     }
     setAlerta("");
-    cargarBebidas(busqueda)
+    cargarBebidas(busqueda);
   };
 
   return (

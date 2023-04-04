@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Modal, Image } from "react-bootstrap";
-import { cerrarModalAction } from '../actions/bebidaActions';
+import { cerrarModalAction } from "../actions/bebidaActions";
 
 const ModalBebida = () => {
   const dispatch = useDispatch();
