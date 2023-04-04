@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import clientAxios from "../config/axios";
 
 const BebidasContext = createContext();
 
@@ -12,8 +12,8 @@ const BebidasProvider = ({ children }) => {
 
   const consultarBebidas = async (datos) => {
     try {
-      const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${datos.nombre}&c=${datos.categoria}`;
-      const { data } = await axios(url);
+      const url = `filter.php?i=${datos.nombre}&c=${datos.categoria}`;
+      const { data } = await clientAxios.get(url);
       setBebidas(data.drinks);
     } catch (error) {}
   };
@@ -31,8 +31,8 @@ const BebidasProvider = ({ children }) => {
     const obtenerReceta = async () => {
       if (!bebidaId) return;
       try {
-        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${bebidaId}`;
-        const { data } = await axios(url);
+        const url = `lookup.php?i=${bebidaId}`;
+        const { data } = await clientAxios.get(url);
         setReceta(data.drinks[0]);
       } catch (error) {} finally {
         setCargando(false)

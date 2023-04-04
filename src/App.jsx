@@ -10,7 +10,7 @@ function App() {
     <CategoriasProvider>
       <BebidasProvider>
         <header className="py-5">
-          <h1>Buscado de Bebidas</h1>
+          <h1>Buscador de Bebidas</h1>
         </header>
         <Container className="mt-5">
           <Formulario />
