@@ -11,10 +11,10 @@ const Formulario = () => {
   });
   const [alerta, setAlerta] = useState("");
   const dispatch = useDispatch();
-  const cargarBebidas = busqueda => dispatch(obtenerBebidasAction(busqueda));
-  const categorias =  useSelector(state => state.categorias.categorias);
+  const cargarBebidas = (busqueda) => dispatch(obtenerBebidasAction(busqueda));
+  const categorias = useSelector((state) => state.categorias.categorias);
 
-  useEffect(() =>{
+  useEffect(() => {
     const cargarCategorias = () => dispatch(obtenerCategoriasAction());
     cargarCategorias();
   }, []);

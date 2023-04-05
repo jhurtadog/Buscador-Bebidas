@@ -5,9 +5,9 @@ import { cerrarModalAction } from "../actions/bebidaActions";
 const ModalBebida = () => {
   const dispatch = useDispatch();
   const handleModalClick = () => dispatch(cerrarModalAction());
-  const loading =  useSelector(state => state.bebidas.loading);
-  const modal =  useSelector(state => state.bebidas.modal);
-  const receta =  useSelector(state => state.bebidas.receta);
+  const loading = useSelector((state) => state.bebidas.loading);
+  const modal = useSelector((state) => state.bebidas.modal);
+  const receta = useSelector((state) => state.bebidas.receta);
 
   const mostrarIngredientes = () => {
     let ingredientes = [];

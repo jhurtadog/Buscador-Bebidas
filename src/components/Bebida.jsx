@@ -37,5 +37,4 @@ Bebida.propTypes = {
   bebida: PropTypes.object,
 };
 
-
 export default Bebida;

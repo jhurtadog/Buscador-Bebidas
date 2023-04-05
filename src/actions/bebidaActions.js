@@ -15,7 +15,9 @@ export function obtenerBebidasAction(busqueda) {
   return async (dispatch) => {
     dispatch(descargarBebidas());
     try {
-      const { data } = await clientAxios.get(`filter.php?i=${nombre}&c=${categoria}`);
+      const { data } = await clientAxios.get(
+        `filter.php?i=${nombre}&c=${categoria}`
+      );
       dispatch(descargaBebidasExitosa(data.drinks));
     } catch (error) {
       dispatch(descargaBebidasError(true));
