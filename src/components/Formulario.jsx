@@ -21,7 +21,7 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(busqueda);
     if (Object.values(busqueda).includes("")) {
       setAlerta("Todos los campos son obligatorios");
       return;
@@ -33,7 +33,7 @@ const Formulario = () => {
   return (
     <Form onSubmit={handleSubmit}>
       {alerta && (
-        <Alert variant="danger" className="text-center">
+        <Alert data-testid="alerta" variant="danger" className="text-center">
           {alerta}
         </Alert>
       )}
@@ -42,6 +42,7 @@ const Formulario = () => {
           <Form.Group className="mb-3">
             <Form.Label htmlFor="nombre">Nombre de Bebida</Form.Label>
             <Form.Control
+              data-testid="nombre"
               id="nombre"
               type="text"
               placeholder="Ej: Tequila, Vodka, etc"
@@ -80,6 +81,7 @@ const Formulario = () => {
       <Row className="justify-content-end">
         <Col md={3}>
           <Button
+            data-testid="btn-submit"
             type="submit"
             variant="danger"
             className="text-uppercase w-100"

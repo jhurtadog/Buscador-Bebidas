@@ -9,7 +9,7 @@ function App() {
   return (
     <Provider store={store}>
       <header className="py-5">
-        <h1>Buscador de Bebidas</h1>
+        <h1 data-testid="titulo">Buscador de Bebidas</h1>
       </header>
       <Container className="mt-5">
         <Formulario />
